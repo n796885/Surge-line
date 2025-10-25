@@ -2,7 +2,6 @@
 #!desc=狙殺常見廣告（需手動更新外部資源） v20250519.01
 
 [Rule]
-DOMAIN,legy.line-apps.com,REJECT-TINYGIF
 DOMAIN-SUFFIX,ad.ettoday.net,DIRECT
 DOMAIN,itad.linetv.tw,REJECT
 DOMAIN,sessions.bugsnag.com,REJECT-DROP
