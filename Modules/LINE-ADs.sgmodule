@@ -1,9 +1,16 @@
-#!name=Remove LINE ADs
-#!desc=刪掉 LINE 惱人的廣告 v20250805.03 - 需啟用 MitM over HTTP/2
+#!name=Remove LINE ADs (legy fixed)
+#!desc=刪掉 LINE 惱人的廣告 v20250805.03 - 需啟用 MitM over HTTP/2 (已加入 legy 主機封鎖)
 #!system=ios
 #!category=Tweaks
 
 [Rule]
+# 最優先：直接封鎖整個 legy 主機（在不依賴 MITM 的情況下也能命中）
+DOMAIN,legy.line-apps.com,REJECT-TINYGIF
+
+# 若 MITM 正常運作，這條會精準封掉你貼出的 PUSH/subs 請求
+URL-REGEX,^https:\/\/legy\.line-apps\.com\/PUSH\/1\/subs\?,REJECT-TINYGIF
+
+# 原有規則（保留）
 URL-REGEX,^https:\/\/a\.line\.me\/er\/lads\/v\d\/ei\?,REJECT-TINYGIF
 URL-REGEX,^https:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image,REJECT-TINYGIF
 URL-REGEX,^https:\/\/a\.line\.me\/lass\/api\/v\d\/ads$,REJECT-DROP
